@@ -27,11 +27,17 @@ public class MissingArrayLength {
     }
 
     private static boolean resultIsZero(Object[][] arrayOfArrays) {
-        return (
-                arrayOfArrays == null ||
-                        arrayOfArrays.length == 0 ||
-                        Arrays.stream(arrayOfArrays).anyMatch(array -> array.length == 0)
-        );
+        if (arrayOfArrays == null)
+            return true;
+        if (arrayOfArrays.length == 0)
+            return true;
+        return Arrays.stream(arrayOfArrays)
+                .anyMatch(array -> {
+                    if (array != null && array.length == 0) {
+                        return true;
+                    }
+                    return array == null;
+                });
     }
 
 }
