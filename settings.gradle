@@ -1,0 +1,11 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+    }
+}
+
+rootProject.name = 'missing-array-length'
+
+include ':app'
+
+project(':app').projectDir = new File('./modules/app')
